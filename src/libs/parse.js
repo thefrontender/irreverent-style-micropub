@@ -92,7 +92,8 @@ export default {
 			if (renameProperties[key]) {
 				parsed[renameProperties[key]] = value
 			} else if (['date', 'updated'].includes(key)) {
-				parsed[key] = value.toISOString()
+				const validDate = new Date(value)
+				parsed[key] = validDate.toISOString()
 			} else if (['draft'].includes(key)) {
 				parsed['status'] = key
 			} else {
